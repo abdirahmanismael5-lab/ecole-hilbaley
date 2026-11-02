@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site de présentation de l'École de Hilbaley.">
+  <title>École de Hilbaley | MENFOP</title>
+  <style>
+    :root{
+      --navy:#12304a; --blue:#176b87; --teal:#2b9a91; --gold:#f2b84b;
+      --ink:#243447; --muted:#64748b; --paper:#f5f8fb; --white:#fff;
+      --line:#e3eaf0; --shadow:0 14px 36px rgba(18,48,74,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .topbar{background:var(--navy);color:#eaf3f8;font-size:.88rem;padding:8px 5%;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 3px 16px rgba(18,48,74,.07)}
+    .navwrap{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .logo{width:54px;height:54px;border-radius:15px;background:linear-gradient(145deg,var(--navy),var(--blue));display:grid;place-items:center;color:white;flex:none}
+    .logo svg{width:38px;height:38px}
+    .brand strong{display:block;color:var(--navy);font-size:1.08rem;line-height:1.25}
+    .brand small{color:var(--muted);font-size:.78rem}
+    nav{display:flex;align-items:center;gap:22px;font-size:.93rem;font-weight:700;color:#38536a}
+    nav a:hover{color:var(--teal)}
+    .menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:10px;padding:9px 12px;font-size:1.25rem;color:var(--navy)}
+    .hero{background:linear-gradient(110deg,rgba(11,42,65,.94),rgba(19,91,112,.82)),linear-gradient(45deg,#17435d,#2b9a91);color:white;overflow:hidden}
+    .hero-inner{max-width:1180px;margin:auto;padding:76px 22px 82px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:35px}
+    .eyebrow{display:inline-block;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:6px 13px;font-size:.82rem;letter-spacing:.04em}
+    h1{font-size:clamp(2.25rem,5vw,3.8rem);line-height:1.08;margin:18px 0}
+    .hero p{max-width:620px;color:#e4f0f5;font-size:1.08rem}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .btn{display:inline-block;padding:12px 19px;border-radius:10px;font-weight:700;border:1px solid transparent}
+    .btn.gold{background:var(--gold);color:#26384a}
+    .btn.outline{border-color:rgba(255,255,255,.55);color:white}
+    .hero-art{min-height:260px;display:grid;place-items:center}
+    .school-card{width:min(100%,350px);aspect-ratio:1.18;border:1px solid rgba(255,255,255,.25);border-radius:28px;background:rgba(255,255,255,.10);backdrop-filter:blur(5px);display:grid;place-items:center;position:relative;overflow:hidden}
+    .school-card svg{width:78%;max-height:245px}
+    .school-card span{position:absolute;bottom:17px;font-weight:700;letter-spacing:.12em;font-size:.78rem;color:#e8f4f5}
+    .quick{max-width:1080px;margin:-28px auto 0;padding:0 22px;position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .quick article{background:white;border:1px solid var(--line);border-radius:15px;padding:18px 20px;box-shadow:var(--shadow)}
+    .quick b{display:block;color:var(--navy);font-size:1rem}
+    .quick span{color:var(--muted);font-size:.88rem}
+    main{max-width:1180px;margin:auto;padding:58px 22px}
+    .section-head{max-width:700px;margin-bottom:26px}
+    .section-head small{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+    h2{color:var(--navy);font-size:clamp(1.7rem,3vw,2.35rem);line-height:1.2;margin:7px 0 10px}
+    .section-head p{color:var(--muted);margin:0}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .about-panel{background:white;border:1px solid var(--line);border-radius:18px;padding:27px;box-shadow:var(--shadow)}
+    .about-panel p{color:var(--muted)}
+    .values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .value{background:#f1f7f8;border-radius:12px;padding:13px;font-weight:700;color:#28556a}
+    .illustration{min-height:290px;border-radius:20px;background:linear-gradient(140deg,#d9edf0,#f8e9c8);display:grid;place-items:center;overflow:hidden}
+    .illustration svg{width:82%;max-height:270px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 24px rgba(18,48,74,.05)}
+    .icon{width:44px;height:44px;border-radius:12px;background:#e6f3f2;color:var(--teal);display:grid;place-items:center;font-size:1.35rem;margin-bottom:13px}
+    .card h3{margin:0 0 7px;color:var(--navy)}
+    .card p{margin:0;color:var(--muted);font-size:.94rem}
+    .news{background:#edf4f7}
+    .news-inner{max-width:1180px;margin:auto;padding:58px 22px}
+    .news-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .notice{background:white;border-radius:16px;padding:23px;border:1px solid var(--line)}
+    .notice .date{font-size:.78rem;font-weight:800;color:var(--teal);text-transform:uppercase}
+    .notice h3{color:var(--navy);margin:8px 0}
+    .notice p{color:var(--muted);margin:0}
+    .placeholder{border:1px dashed #b8c9d4;border-radius:14px;padding:25px;text-align:center;color:var(--muted);background:#fbfdfe}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px}
+    .contact-info{background:var(--navy);color:white;border-radius:18px;padding:25px}
+    .contact-info h3{margin-top:0}
+    .contact-info p{color:#d5e4ec}
+    form{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:12px}
+    label{font-size:.9rem;font-weight:700;color:var(--navy)}
+    input,textarea{width:100%;padding:12px;border:1px solid #d5e0e8;border-radius:9px;font:inherit;margin-top:5px}
+    textarea{min-height:100px;resize:vertical}
+    form button{border:0;cursor:pointer}
+    footer{background:#0d263b;color:#d6e3eb;padding:27px 22px;text-align:center;font-size:.88rem}
+    footer strong{color:white}
+    .note{font-size:.8rem;color:var(--muted);margin-top:12px}
+    @media(max-width:800px){
+      .navwrap{flex-wrap:wrap}.menu-btn{display:block}
+      nav{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:0;padding:8px 0}
+      nav.open{display:flex}nav a{padding:11px 3px;width:100%;border-top:1px solid var(--line)}
+      .hero-inner{grid-template-columns:1fr;padding-top:54px}.hero-art{min-height:210px}
+      .quick{grid-template-columns:1fr;margin-top:-18px}
+      .about-grid,.news-grid,.contact-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:520px){.cards{grid-template-columns:1fr}.values{grid-template-columns:1fr 1fr}.topbar{font-size:.78rem}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><span>MENFOP · Éducation et réussite pour tous</span><span>Bienvenue sur le site de l'École de Hilbaley</span></div>
+  <header>
+    <div class="navwrap">
+      <a class="brand" href="#accueil" aria-label="Accueil École de Hilbaley">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M8 18c9-4 17-3 24 2v31c-7-5-15-6-24-2V18Z" fill="#fff" opacity=".96"/>
+            <path d="M56 18c-9-4-17-3-24 2v31c7-5 15-6 24-2V18Z" fill="#d9f0ed"/>
+            <path d="M32 20v31M12 25c6-2 11-1 16 2M52 25c-6-2-11-1-16 2" stroke="#176b87" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div><strong>École de Hilbaley</strong><small>MENFOP · Site de l'établissement</small></div>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+      <nav id="nav">
+        <a href="#accueil">Accueil</a><a href="#ecole">Notre école</a><a href="#apprentissages">Apprentissages</a><a href="#actualites">Actualités</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="accueil">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">ENSEMBLE, APPRENONS ET GRANDISSONS</span>
+        <h1>Bienvenue à l'École de Hilbaley</h1>
+        <p>Un lieu d'apprentissage, de découverte et de réussite où chaque élève est encouragé à développer ses connaissances et ses talents.</p>
+        <div class="actions"><a class="btn gold" href="#ecole">Découvrir notre école</a><a class="btn outline" href="#contact">Nous contacter</a></div>
+      </div>
+      <div class="hero-art">
+        <div class="school-card">
+          <svg viewBox="0 0 360 270" fill="none" aria-label="Illustration d'un livre ouvert devant des montagnes">
+            <path d="M22 190 105 75l62 81 48-58 122 92H22Z" fill="#f2c66d"/>
+            <path d="m76 116 29-41 25 33-18-8-13 13-10-8-13 11ZM188 120l27-22 26 20-19-7-10 9-9-7-15 7Z" fill="#fff" opacity=".95"/>
+            <path d="M180 173c-44-26-92-28-139-10v66c47-18 95-16 139 10 44-26 92-28 139-10v-66c-47-18-95-16-139 10Z" fill="#fff"/>
+            <path d="M180 173c-44-26-92-28-139-10v66c47-18 95-16 139 10m0-66c44-26 92-28 139-10v66c-47-18-95-16-139 10m0-66v66" stroke="#176b87" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M61 181c31-8 65-5 94 9m144-9c-31-8-65-5-94 9" stroke="#9fc8c8" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <span>SAVOIR · RESPECT · RÉUSSITE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="quick">
+    <article><b>📚 Apprendre</b><span>Acquérir des connaissances et des compétences.</span></article>
+    <article><b>🤝 Grandir ensemble</b><span>Développer le respect, l'entraide et la citoyenneté.</span></article>
+    <article><b>🌟 Réussir</b><span>Encourager chaque élève à progresser.</span></article>
+  </div>
+
+  <main>
+    <section id="ecole">
+      <div class="about-grid">
+        <div class="about-panel">
+          <div class="section-head"><small>Qui sommes-nous ?</small><h2>Une école au service des élèves</h2></div>
+          <p>L'École de Hilbaley accueille les élèves dans un environnement dédié à l'apprentissage et à l'épanouissement. Toute l'équipe éducative œuvre avec les familles et la communauté pour accompagner chaque enfant dans son développement.</p>
+          <div class="values"><div class="value">✓ Respect</div><div class="value">✓ Solidarité</div><div class="value">✓ Discipline</div><div class="value">✓ Excellence</div></div>
+        </div>
+        <div class="illustration">
+          <svg viewBox="0 0 360 260" fill="none" aria-label="Livre ouvert devant une montagne">
+            <path d="M20 184 105 58l72 103 50-67 113 90H20Z" fill="#75aaa8"/>
+            <path d="m76 101 29-43 28 40-20-10-9 11-10-8-18 10ZM203 115l24-21 25 18-17-5-9 9-8-6-15 5Z" fill="#fff"/>
+            <path d="M180 162c-42-25-88-26-132-9v62c44-17 90-16 132 9 42-25 88-26 132-9v-62c-44-17-90-16-132 9Z" fill="#fff"/>
+            <path d="M180 162c-42-25-88-26-132-9v62c44-17 90-16 132 9m0-62c42-25 88-26 132-9v62c-44-17-90-16-132 9m0-62v62" stroke="#176b87" stroke-width="5"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="apprentissages" style="padding-top:65px">
+      <div class="section-head"><small>La vie scolaire</small><h2>Apprendre chaque jour</h2><p>Les apprentissages et les activités qui contribuent au développement de nos élèves.</p></div>
+      <div class="cards">
+        <article class="card"><div class="icon">✏️</div><h3>Langue et communication</h3><p>Lire, écrire, s'exprimer et enrichir son vocabulaire.</p></article>
+        <article class="card"><div class="icon">🔢</div><h3>Mathématiques</h3><p>Raisonner, compter, calculer et résoudre des problèmes.</p></article>
+        <article class="card"><div class="icon">🌱</div><h3>Découverte du monde</h3><p>Observer l'environnement, poser des questions et comprendre le monde.</p></article>
+        <article class="card"><div class="icon">🎨</div><h3>Activités créatives</h3><p>Développer l'imagination à travers les activités artistiques et ludiques.</p></article>
+        <article class="card"><div class="icon">⚽</div><h3>Sport et bien-être</h3><p>Apprendre à coopérer, respecter les règles et prendre soin de soi.</p></article>
+        <article class="card"><div class="icon">🤝</div><h3>Vie collective</h3><p>Construire un climat scolaire fondé sur le respect et l'entraide.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <section class="news" id="actualites">
+    <div class="news-inner">
+      <div class="section-head"><small>Informations</small><h2>Actualités de l'école</h2><p>Les annonces, événements et informations destinés aux familles et à la communauté scolaire.</p></div>
+      <div class="news-grid">
+        <article class="notice"><span class="date">Actualité de l'établissement</span><h3>Bienvenue sur le site de l'École de Hilbaley</h3><p>Retrouvez ici les informations importantes concernant l'école, ses projets, ses activités et ses réunions.</p></article>
+        <div class="placeholder"><strong>📢 Espace annonces</strong><br>Les dates de réunions, activités et événements seront affichées ici.</div>
+      </div>
+    </div>
+  </section>
+
+  <main id="contact">
+    <div class="section-head"><small>Restons en contact</small><h2>Contacter l'école</h2><p>Pour une question ou une information, rapprochez-vous de la direction de l'établissement.</p></div>
+    <div class="contact-grid">
+      <div class="contact-info"><h3>École de Hilbaley</h3><p>MENFOP</p><p>Direction de l'établissement</p><p>📍 Hilbaley, Djibouti</p><p class="note" style="color:#d5e4ec">Les coordonnées tél��phoniques et email seront ajoutées lors de la mise en ligne du site.</p></div>
+      <form id="contactForm">
+        <label>Nom<input type="text" placeholder="Votre nom" required></label>
+        <label>Adresse e-mail<input type="email" placeholder="Votre adresse e-mail" required></label>
+        <label>Votre message<textarea placeholder="Écrivez votre message..." required></textarea></label>
+        <button class="btn gold" type="submit">Préparer le message</button>
+        <p class="note">Maquette de présentation : ce formulaire n'envoie pas encore de message.</p>
+      </form>
+    </div>
+  </main>
+
+  <footer><strong>École de Hilbaley · MENFOP</strong><br>© <span id="year"></span> — Tous droits réservés.</footer>
+  <script>
+    const menuBtn=document.getElementById('menuBtn');
+    const nav=document.getElementById('nav');
+    menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      alert("Merci ! Ce formulaire est une maquette. Les fonctions d'envoi seront ajoutées lors de la mise en ligne.");
+    });
+  </script>
+</body>
+</html>
